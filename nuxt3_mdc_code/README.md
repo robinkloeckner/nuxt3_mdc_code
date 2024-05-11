@@ -1,0 +1,2 @@
+# Nuxt 3 / Nuxt MDC - Custom Code Block
+Source code for the tutorial [How to Build a Custom Code Block with Nuxt MDC](https://www.docs4.dev/posts/how-to-build-a-custom-code-block-with-nuxt-mdc-and-prose-pre) on www.docs4.dev. Follow the link for a detailed description.
