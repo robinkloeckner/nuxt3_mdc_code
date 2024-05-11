@@ -1,3 +1,60 @@
+<script setup lang="ts">
+const props = defineProps({
+  code: {
+    type: String,
+    default: ''
+  },
+  language: {
+    type: String,
+    default: null
+  },
+  filename: {
+    type: String,
+    default: null
+  },
+  highlights: {
+    type: Array as () => number[],
+    default: () => []
+  },
+  meta: {
+    type: String,
+    default: null
+  },
+  class: {
+    type: String,
+    default: null
+  }
+})
+
+const codeCopied = ref<boolean>(false);
+
+const copyCode = (): void => {
+  navigator.clipboard.writeText(props.code)
+      .then(() => {
+        codeCopied.value = true;
+        setTimeout(function () {
+          codeCopied.value = false;
+        }, 5000);
+      })
+      .catch((e) => {
+        console.error('Error: Unable to copy code.');
+      });
+}
+</script>
+
+<template>
+  <div class="pre">
+    <div class="pre-head">
+      <div v-if="props.filename" class="filename">
+        <i>{{ filename }}</i>
+      </div>
+      <span v-if="codeCopied" class="copy-success"><i>Copied</i></span>
+      <button class="copy-btn" @click="copyCode">Copy</button>
+    </div>
+    <pre class="pre-body" :class="$props.class"><slot/></pre>
+  </div>
+</template>
+
 <style lang="scss">
 .pre {
   overflow-x: hidden;
