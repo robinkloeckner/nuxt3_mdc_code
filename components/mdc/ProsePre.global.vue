@@ -117,6 +117,7 @@ const copyCode = (): void => {
     code {
       display: inline-block;
       width: 100%;
+      min-width: max-content;
     }
 
     .line {
